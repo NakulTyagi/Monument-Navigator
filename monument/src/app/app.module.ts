@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { MonumentsComponent } from './monuments/monuments.component';
 import { NavComponent } from './nav/nav.component';
-
+import { DragDropDirective } from './home/drag-drop.directive';
 import { AddComponent } from './add/add.component';
 
 @NgModule({
@@ -17,7 +17,8 @@ import { AddComponent } from './add/add.component';
     UserComponent,
     MonumentsComponent,
     NavComponent,
-    AddComponent
+    AddComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,
