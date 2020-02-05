@@ -18,7 +18,23 @@
 
     <!-- Place your stylesheet here-->
     <link href="/css/stylesheet.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            margin-top: 5%;
+        }
+
+        #res {
+            float: left;
+            width: 75%;
+            overflow: hidden;
+        }
+
+        #demo {
+            float: left;
+            width: 25%;
+            overflow: hidden;
+        }
+    </style>
 
 </head>
 
@@ -36,12 +52,14 @@
 
         </div>
 
-        <div id="demo"></div>
-        <div>
-            <h1 id="result"></h1>
-            <img id="img" src="" alt="">
-        </div>
 
+        <div id="res">
+            <h1><a id="result" href="https://www.bvcoend.ac.in/" target="_blank"></a></h1>
+            <img id="img" height="50%" width="60%" src="" alt="">
+        </div>
+        <div>
+            <ul id="demo"></ul>
+        </div>
     </main><!-- /.container -->
 
     <script>
@@ -87,6 +105,9 @@
                     index = i;
 
                 }
+                var a = document.createElement("li");
+                a.innerHTML = monu[i] + "<br>Distance - " + Math.round(d) + "km";
+                x.appendChild(a);
             }
             console.log(monu[index]);
             y.innerHTML = "Nearest Monuments - " + monu[index] + "<br>Distance - " + Math.round(min) + "km";

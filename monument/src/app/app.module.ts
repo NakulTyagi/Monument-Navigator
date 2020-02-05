@@ -9,6 +9,7 @@ import { MonumentsComponent } from './monuments/monuments.component';
 import { NavComponent } from './nav/nav.component';
 import { DragDropDirective } from './home/drag-drop.directive';
 import { AddComponent } from './add/add.component';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddComponent } from './add/add.component';
     MonumentsComponent,
     NavComponent,
     AddComponent,
-    DragDropDirective
+    DragDropDirective,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,10 @@ import { AddComponent } from './add/add.component';
         path: "add",
         component: AddComponent
       },
-
+      {
+        path: "authenticate",
+        component: AuthenticateComponent
+      },
     ])
   ],
   providers: [],
