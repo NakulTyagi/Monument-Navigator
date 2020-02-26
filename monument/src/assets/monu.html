@@ -34,6 +34,10 @@
             width: 25%;
             overflow: hidden;
         }
+
+        p {
+            margin-top: 2%;
+        }
     </style>
 
 </head>
@@ -56,6 +60,7 @@
         <div id="res">
             <h1><a id="result" href="https://www.bvcoend.ac.in/" target="_blank"></a></h1>
             <img id="img" height="50%" width="60%" src="" alt="">
+            <p id="info"></p>
         </div>
         <div>
             <ul id="demo"></ul>
@@ -66,6 +71,7 @@
         var x = document.getElementById("demo");
         var y = document.getElementById("result");
         var z = document.getElementById("img");
+        var p = document.getElementById("info");
         function getLocation() {
             if (navigator.geolocation) {
                 //            navigator.geolocation.getCurrentPosition(showPosition);
@@ -112,6 +118,7 @@
             console.log(monu[index]);
             y.innerHTML = "Nearest Monuments - " + monu[index] + "<br>Distance - " + Math.round(min) + "km";
             z.src = img[index];
+            p.innerHTML = "Bharati vidyapeeth’s college of engg., New Delhi since its establishment in 1999, has strived to provide the best engineering education to its students through well qualified and dedicated faculty and provision of well equipped modern labs."
         }
     </script>
 
