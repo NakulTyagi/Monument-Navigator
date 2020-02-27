@@ -4,6 +4,7 @@ const User = require('../models/user')
 const mongoose = require('mongoose')
 const db = "mongodb+srv://user-nakul:1234@cluster0-hnvbc.mongodb.net/test?retryWrites=true&w=majority"
 
+
 mongoose.connect(db, function (err) {
     if (err) {
         console.error('Error! ' + err)

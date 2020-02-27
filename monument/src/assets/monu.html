@@ -17,10 +17,23 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Place your stylesheet here-->
-    <link href="/css/stylesheet.css" rel="stylesheet" type="text/css">
+    <!-- <link href="/css/stylesheet.css" rel="stylesheet" type="text/css"> -->
     <style>
         img {
             margin-top: 5%;
+        }
+
+        #direct {
+            display: none;
+        }
+
+        #map {
+            display: none;
+        }
+
+        #side {
+            height: 30%;
+            width: 40%;
         }
 
         #res {
@@ -30,6 +43,7 @@
         }
 
         #demo {
+            margin-top: 10%;
             float: left;
             width: 25%;
             overflow: hidden;
@@ -63,18 +77,34 @@
             <p id="info"></p>
         </div>
         <div>
+            <form action="http://maps.google.com/maps" method="get" target="_blank">
+                <div id="map">
+                    <label for="saddr">Enter your location</label>
+                    <input type="text" name="saddr" />
+                    <input id="dest" type="hidden" name="daddr"
+                        value="350 5th Ave New York, NY 10018 (Empire State Building)" />
+                </div>
+                <input id="direct" class="btn btn-primary" type="submit" value="Get directions" />
+            </form>
+        </div>
+        <div>
             <ul id="demo"></ul>
         </div>
     </main><!-- /.container -->
 
     <script>
+        // document.getElementById(map).style.display = "none";
+        var dest = document.getElementById("dest");
         var x = document.getElementById("demo");
         var y = document.getElementById("result");
         var z = document.getElementById("img");
         var p = document.getElementById("info");
+        var lati;
+        var longi;
         function getLocation() {
+            document.getElementById("direct").style.display = "block";
             if (navigator.geolocation) {
-                //            navigator.geolocation.getCurrentPosition(showPosition);
+                //  navigator.geolocation.getCurrentPosition(showPosition);
                 navigator.geolocation.getCurrentPosition(nearest);
             } else {
                 x.innerHTML = "Geolocation is not supported by this browser.";
@@ -82,8 +112,11 @@
         }
 
         function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
+            // var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+            // var img_url = "https://apis.mapmyindia.com/advancedmaps/v1/4gikmt82obuu2mh7qe69afubm8dif53i/route_adv/driving/77.131123,28.552413;77.113091,28.544649?steps=false&rtype=1";
+
+            // document.getElementById("dest"). = img_url;
         }
         var monu = ["BVCOE", "Red Fort", "Humayun's Tomb", "Jama Masjid", "Akshardham", "India Gate", "Taj Mahal", "Qutub Minar"];
         var lat = ["28.6759", "28.6562", "28.5933", "28.6507", "28.6129", "28.5535", "27.1751", "28.5245"];
@@ -111,17 +144,51 @@
                     index = i;
 
                 }
+                // var b = document.createElement("img");
+                // b.width = "150px";
+                // b.height = "150px";
+                // b.src = img[i];
                 var a = document.createElement("li");
-                a.innerHTML = monu[i] + "<br>Distance - " + Math.round(d) + "km";
+                a.innerHTML = "<img id= " + "side" + " src=" + img[i] + "> <br> " + monu[i] + "<br>Distance - " + Math.round(d) + "km";
+                // x.appendChild(b);
                 x.appendChild(a);
+
             }
             console.log(monu[index]);
             y.innerHTML = "Nearest Monuments - " + monu[index] + "<br>Distance - " + Math.round(min) + "km";
             z.src = img[index];
+            dest.value = monu[index];
             p.innerHTML = "Bharati vidyapeeth’s college of engg., New Delhi since its establishment in 1999, has strived to provide the best engineering education to its students through well qualified and dedicated faculty and provision of well equipped modern labs."
         }
-    </script>
 
+        // var map;
+
+    //     function initMap() {
+    //         console.log(lati + " " + longi);
+    //         var latitude = this.lati;  YOUR LATITUDE VALUE
+    //         var longitude = this.longi;  YOUR LONGITUDE VALUE
+
+    //         var myLatLng = { lat: latitude, lng: longitude };
+
+    //         map = new google.maps.Map(document.getElementById('map'), {
+    //             center: myLatLng,
+    //             zoom: 14
+    //         });
+
+    //         var marker = new google.maps.Marker({
+    //             position: myLatLng,
+    //             map: map,
+    //             //title: 'Hello World'
+
+    //             // setting latitude & longitude as title of the marker
+    //             // title is shown when you hover over the marker
+    //             title: latitude + ', ' + longitude
+    //         });
+    //     }
+    // </script>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_FWRB6vJRjr5bv-KdNCazrg-DgwDyYgw&callback=initMap"
+         async defer></script> -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
